@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Reader implements IReader, Serializable {
     private int id;
@@ -153,8 +154,8 @@ public class Reader implements IReader, Serializable {
         preparedStatement.close();
     }
 
-    public static ArrayList<Reader> getAllReaders(){
-        ArrayList<Reader> list = new ArrayList<>();
+    public static Stack<Reader> getAllReaders(){
+        Stack<Reader> list = new Stack<>();
         try {
             Statement statement = Database.getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery("select * from Reader");
